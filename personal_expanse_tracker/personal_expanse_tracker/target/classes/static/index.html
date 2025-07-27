@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal Expense Tracker</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <h1>Expense Tracker</h1>
+    <div class="auth-buttons">
+    <button class="login-btn" onclick="window.location.href='login.html'">Login</button>
+<button class="signup-btn" onclick="window.location.href='signup.html'">Sign Up</button>
+
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="chart-section">
+      <h2>Where is your money going?</h2>
+      <canvas id="categoryChart"></canvas>
+    </section>
+
+    <section class="motivation">
+      <div class="motivation-box">
+        <img src="savings.png" alt="Save More"/>
+        <p>Let's maximize our savings for a better future!</p>
+      </div>
+
+      <div class="motivation-box">
+        <img src="track-money.png" alt="Track Money"/>
+        <p>Track your money like a pro 🚀</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Take charge of your spending habits. Analyze, adjust, and grow financially stronger every day!</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weekly Transactions</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="mb-4">Weekly Transactions</h2>
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Date</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Amount (₹)</th>
+        </tr>
+      </thead>
+      <tbody id="weekly-transactions-body">
+        <!-- rows will be added dynamically -->
+      </tbody>
+    </table>
+    <a href="dashboard.html" class="btn btn-primary mt-3">← Back to Dashboard</a>
+  </div>
+
+  <script>
+    async function loadWeeklyTransactions() {
+      try {
+        const res = await fetch("http://localhost:8091/api/expenses/weekly-transactions");
+        const data = await res.json();
+        const tableBody = document.getElementById("weekly-transactions-body");
+        data.forEach((item) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${item.date}</td>
+            <td>${item.category}</td>
+            <td>${item.description}</td>
+            <td>₹${item.amount.toFixed(2)}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      } catch (err) {
+        console.error("Error loading weekly data", err);
+      }
+    }
+    loadWeeklyTransactions();
+  </script>
+</body>
+</html>
